@@ -68,8 +68,8 @@ public class PatientController {
         }
     }
 
-    @GetMapping("/search/{searchString}")
-    public ResponseEntity<List<PatientDto>> searchPatients(@PathVariable String searchString) {
+    @GetMapping("/search")
+    public ResponseEntity<List<PatientDto>> searchPatients(@RequestParam("searchString") String searchString) {
         List<Patient> patients = patientService.searchPatients(searchString);
         List<PatientDto> patientDtos = patients.stream()
                 .map(dtoMapper::toPatientDto)
