@@ -19,6 +19,10 @@ public class Dentist {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long dentistId;
 
+    @OneToOne
+    @JoinColumn(name = "user_id", unique = true)
+    private User user;
+
     private String firstName;
     private String lastName;
     private String phone;
@@ -40,5 +44,14 @@ public class Dentist {
         this.email = email;
         this.specialization = specialization;
     }
-}
 
+    public Dentist(User user, String firstName, String lastName, String phone, String email,
+                   String specialization) {
+        this.user = user;
+        this.firstName = firstName;
+        this.lastName = lastName;
+        this.phone = phone;
+        this.email = email;
+        this.specialization = specialization;
+    }
+}
